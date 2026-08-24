@@ -502,12 +502,9 @@ async function sendMessage() {
 
 
         if (!response.ok) {
-
-            throw new Error(
-                "Erreur Supabase"
-            );
-        }
-
+    const details = await response.text();
+    throw new Error("Supabase : " + details);
+}
 
         alert(
             "connexion validee!"
